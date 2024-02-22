@@ -52,7 +52,7 @@ function decreaseFromCart(item) {
 </script>
 
 <template>
-  <div class="grid grid-cols-3 m-5">
+  <div class="grid grid-cols-3 m-2">
     <div
       v-for="item in items"
       class="item-container flex flex-col items-center justify-center rounded-2xl p-3 m-1"
@@ -75,7 +75,7 @@ function decreaseFromCart(item) {
         <button class="rounded-full py-1 px-3" @click="increaseToCart(item)">
           +
         </button>
-        <div class="hint">{{ item.quantity }}</div>
+        <div class="hint px-1">{{ item.quantity }}</div>
         <button class="rounded-full py-1 px-3" @click="decreaseFromCart(item)">
           -
         </button>
