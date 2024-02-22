@@ -4,9 +4,9 @@ import { ref } from 'vue'
 const cart = ref([])
 const total = ref(0)
 const items = ref([
-  { emoji: '🍔', title: 'Бургер', price: '150' },
-  { emoji: '🍟', title: 'Фри', price: '100' },
-  { emoji: '🍕', title: 'Пицца', price: '300' },
+  { emoji: '🍔', title: 'Бургер', price: 150 },
+  { emoji: '🍟', title: 'Фри', price: 100 },
+  { emoji: '🍕', title: 'Пицца', price: 300 },
 ])
 
 const tg = window.Telegram.WebApp
