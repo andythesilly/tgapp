@@ -1,30 +1,44 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue'
+
+const cart = ref([])
+const total = ref(0)
+const items = ref([
+  { emoji: '🍔', title: 'Бургер', price: '150' },
+  { emoji: '🍟', title: 'Фри', price: '100' },
+  { emoji: '🍕', title: 'Пицца', price: '300' },
+])
+
+const tg = window.Telegram.WebApp
+function addToCart(item) {
+  if (!tg.MainButton.isVisible) {
+    tg.MainButton.show()
+  }
+
+  cart.value.push(item)
+  total.value += item.price
+
+  tg.MainButton.setText(total.value)
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="grid grid-cols-3 m-5">
+    <div
+      v-for="item in items"
+      class="item-container flex flex-col items-center justify-center rounded-2xl p-3 m-1"
+    >
+      <div class="text-7xl">{{ item.emoji }}</div>
+      <div class="flex flex-row py-2">
+        <div>{{ item.title }}</div>
+        <div class="mx-1">·</div>
+        <div class="font-bold">{{ item.price }}</div>
+      </div>
+      <div>
+        <button class="rounded-full py-1 px-3" @click="addToCart(item)">
+          Добавить
+        </button>
+      </div>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
