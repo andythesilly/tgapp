@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import ItemCard from './components/ItemCard.vue'
 
 const cart = ref([])
 const total = ref(0)
@@ -55,31 +56,19 @@ function decreaseFromCart(item) {
   <div class="grid grid-cols-3 m-2">
     <div
       v-for="item in items"
+      :key="item.title"
       class="item-container flex flex-col items-center justify-center rounded-2xl p-3 m-1"
     >
-      <div class="text-7xl">{{ item.emoji }}</div>
-      <div class="flex flex-row py-2">
-        <div>{{ item.title }}</div>
-        <div class="mx-1 hint">·</div>
-        <div class="font-bold">{{ item.price }}</div>
-      </div>
-      <div
-        v-if="item.isAdding"
-        class="flex flex-row justify-center items-center"
-      >
-        <button class="rounded-full py-1 px-3" @click="addToCart(item)">
-          Добавить
-        </button>
-      </div>
-      <div v-else class="flex flex-row justify-center items-center">
-        <button class="rounded-full py-1 px-3" @click="increaseToCart(item)">
-          +
-        </button>
-        <div class="hint px-1">{{ item.quantity }}</div>
-        <button class="rounded-full py-1 px-3" @click="decreaseFromCart(item)">
-          -
-        </button>
-      </div>
+      <ItemCard
+        :emoji="item.emoji"
+        :title="item.title"
+        :price="item.price"
+        :isAdding="item.isAdding"
+        :quantity="item.quantity"
+        @add-to-cart="addToCart(item)"
+        @increase-to-cart="increaseToCart(item)"
+        @decrease-from-cart="decreaseFromCart(item)"
+      />
     </div>
   </div>
 </template>
