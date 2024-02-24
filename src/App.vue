@@ -8,8 +8,8 @@ const items = ref([
   { emoji: '🍔', title: 'Бургер', price: 150, isAdding: true, quantity: 0 },
   { emoji: '🍟', title: 'Фри', price: 100, isAdding: true, quantity: 0 },
   { emoji: '🍕', title: 'Пицца', price: 300, isAdding: true, quantity: 0 },
-  { emoji: '🌭', title: 'Хот-дог', price: 120, isAdding: true, quantity: 0 },
-  { emoji: '🍗', title: 'Крылышки', price: 250, isAdding: true, quantity: 0 },
+  { emoji: '🌭', title: 'Хотдог', price: 120, isAdding: true, quantity: 0 },
+  { emoji: '🍗', title: 'Курица', price: 250, isAdding: true, quantity: 0 },
   { emoji: '🍪', title: 'Печенье', price: 80, isAdding: true, quantity: 0 },
 ])
 
