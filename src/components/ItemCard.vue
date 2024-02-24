@@ -18,10 +18,10 @@ defineEmits(['add-to-cart', 'increase-to-cart', 'decrease-from-cart'])
     {{ quantity }}
   </div>
   <div class="text-7xl">{{ item.emoji }}</div>
-  <div class="flex flex-row items-center py-2">
+  <div class="flex flex-row items-center justify-center py-2">
     <div class="text-base">{{ item.title }}</div>
     <div class="mx-1 hint">·</div>
-    <div class="font-bold text-sm">{{ item.price }}</div>
+    <div class="font-semibold">{{ item.price }}</div>
   </div>
   <div
     v-if="item.isAdding"
