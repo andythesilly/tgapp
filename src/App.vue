@@ -16,6 +16,7 @@ const items = ref([
 const tg = window.Telegram.WebApp
 function addToCart(item) {
   if (!tg.MainButton.isVisible) {
+    tg.enableClosingConfirmation()
     tg.MainButton.show()
   }
 
@@ -50,6 +51,7 @@ function decreaseFromCart(item) {
   }
 
   if (total.value == 0) {
+    tg.disableClosingConfirmation()
     tg.MainButton.hide()
   }
 }
