@@ -8,6 +8,9 @@ const items = ref([
   { emoji: '🍔', title: 'Бургер', price: 150, isAdding: true, quantity: 0 },
   { emoji: '🍟', title: 'Фри', price: 100, isAdding: true, quantity: 0 },
   { emoji: '🍕', title: 'Пицца', price: 300, isAdding: true, quantity: 0 },
+  { emoji: '🌭', title: 'Хот-дог', price: 120, isAdding: true, quantity: 0 },
+  { emoji: '🍗', title: 'Крылышки', price: 250, isAdding: true, quantity: 0 },
+  { emoji: '🍪', title: 'Печенье', price: 80, isAdding: true, quantity: 0 },
 ])
 
 const tg = window.Telegram.WebApp
@@ -57,7 +60,7 @@ function decreaseFromCart(item) {
     <div
       v-for="item in items"
       :key="item.title"
-      class="item-container flex flex-col items-center justify-center rounded-2xl p-3 m-1"
+      class="item-container rounded-2xl p-3 m-1"
     >
       <ItemCard
         :emoji="item.emoji"
