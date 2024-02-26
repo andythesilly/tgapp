@@ -14,6 +14,25 @@ const items = ref([
 ])
 
 const tg = window.Telegram.WebApp
+tg.MainButton.onClick(() => {
+  fetch(
+    'https://d5dpam2s44a91e76tsdu.apigw.yandexcloud.net/mini-app-function',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Create-Invoice-Request': 'true',
+      },
+      body: JSON.stringify(cart.value),
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => tg.openInvoice(data))
+    .catch((error) => {
+      tg.showAlert('Ошибка формирования счета: ' + error)
+    })
+})
+
 function addToCart(item) {
   if (!tg.MainButton.isVisible) {
     tg.enableClosingConfirmation()
@@ -26,20 +45,20 @@ function addToCart(item) {
   item.quantity = 1
 
   total.value += item.price
-  tg.MainButton.setText(total.value)
+  tg.MainButton.setText(`Оплатить ${total.value}₽`)
 }
 
 function increaseToCart(item) {
   item.quantity++
 
   total.value += item.price
-  tg.MainButton.setText(total.value)
+  tg.MainButton.setText(`Оплатить ${total.value}₽`)
 }
 
 function decreaseFromCart(item) {
   item.quantity--
   total.value -= item.price
-  tg.MainButton.setText(total.value)
+  tg.MainButton.setText(`Оплатить ${total.value}₽`)
 
   if (item.quantity === 0) {
     const index = cart.value.indexOf(item)
