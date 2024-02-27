@@ -36,13 +36,13 @@ defineEmits(['add-to-cart', 'increase-to-cart', 'decrease-from-cart'])
   </div>
   <div v-else class="flex flex-row justify-center items-center w-full">
     <button
-      class="rounded-full p-2 w-[50%] font-bold mr-1"
+      class="rounded-full p-2 w-[50%] font-bold mr-1 increase_btn"
       @click="$emit('increase-to-cart')"
     >
       +
     </button>
     <button
-      class="rounded-full p-2 w-[50%] font-bold ml-1"
+      class="rounded-full p-2 w-[50%] font-bold ml-1 decrease_btn"
       @click="$emit('decrease-from-cart')"
     >
       -

@@ -32,4 +32,14 @@
     background-color: var(--tg-theme-section-bg-color);
     color: var(--tg-theme-accent-text-color);
   }
+
+  .increase_btn {
+    background-color: var(--tg-theme-accent-text-color);
+    color: white;
+  }
+
+  .decrease_btn {
+    background-color: var(--tg-theme-destructive-text-color);
+    color: white;
+  }
 }
